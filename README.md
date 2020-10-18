@@ -2,8 +2,8 @@
 
 Most of the elements are based on [this PDF excerpt](http://pages.cpsc.ucalgary.ca/~gaines/reports/COMP/SCS69/SCS69.pdf)
 titled "Stochastic Computing Systems" by B. R. Gaines. There is a broader field
-of stochastic computing than that described by Gaines, and so I have renamed
-his approach "stochastic bitstream computing." There is also a form of computing
+of stochastic computing than that described by Gaines, and so I am calling this
+approach "stochastic bitstream computing." There is also a form of computing
 termed "bitstream computing" which does not necessarily utilize stochasticity.
 
 This repository contains [logisim](http://www.cburch.com/logisim/) files.
@@ -55,8 +55,8 @@ value over time.
 
 Note that the graphical elements only have 16 LEDs so they are only using the
 upper hex digit of the 8-bit value and throwing away the lower hex digits.
-Practically, this means you will click VAR four times in one direction before
-you see a visual change on the LEDs.
+Practically, this means you will click VAR sixteen times in one direction
+before you see a visual change on the LEDs.
 
 02_DSC.circ
 -----------
