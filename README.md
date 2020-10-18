@@ -36,7 +36,8 @@ I'll try to add a description for each Logisim file as I publish it.
 This file introduces the inputs and outputs for the SBC circuits we will build.
 It introduces the VAR element which can be used to drive an 8-bit value. To
 increase the output value of the VAR element, click the upper button. To
-decrease it, click the lower button. 
+decrease it, click the lower button. You must press Ctl+K to start the clocks
+before the counters will respond to button-presses.
 
 It introduces the DISPH element which can drive two 7-segment displays showing
 an 8-bit hex value.
@@ -56,7 +57,39 @@ upper hex digit of the 8-bit value and throwing away the lower hex digits.
 Practically, this means you will click VAR four times in one direction before
 you see a visual change on the LEDs.
 
-The next circuit will introduce a few basic elements that are used in a
-stochastic bitstream circuit. Stay tuned...
+02_DSC.circ
+-----------
 
+This file introduces the Digital-to-Stochastic converter or DSC. The DSC allows
+you to generate a stochastic signal from an 8-bit digital value. When the value
+on the 7-segment displays is 0.000, the graph will stay blank. But when you
+increase the value of VAR to some non-zero value, you will start to see green
+dots showing up on the graph.
+
+If you set VAR to 0.500, you will see about 50% of the columns have a green
+dot, and 50% do not, at any given time. But the pattern is random and this is
+what makes the stochastic signal stochastic. It is a single bit line carrying a
+1 about 50% of the time when the 8-bit input of the DSC is 0x80 (and the
+display will show 0.500). If you increase VAR towards 1, a larger and larger
+percentage of the columns will have a green dot. And so on. The DSC element is
+a convenient way to generate stochastic input signals to a stochastic circuit.
+
+03_ADDIE_intro.circ
+-------------------
+
+This file introduces the ADDIE which is described in Gaines. It stands for
+"ADaptive DIgital Element". The ADDIE allows us to convert a stochastic signal
+back to digital form, among other things.
+
+To see how the ADDIE works, set VAR to some desired value as shown on the
+7-segment displays. You will notice that the display connected to D8_OUT signal
+from the ADDIE will begin to change to match the value you have assigned to
+VAR. However, the input to the ADDIE is stochastic, so the resulting output of
+the ADDIE is also stochastic -- the value of the output will vary slightly in
+respect to the reference value of VAR. This might seem like a bug but it
+illustrates the essential feature of stochastic bitstream computing. The random
+"jitter" induced by the stochastic elements is actually a very useful property
+because it will allow us to de-correlate signals in the circuit.
+
+Stay tuned...
 
