@@ -102,5 +102,29 @@ illustrates the essential feature of stochastic bitstream computing. The random
 "jitter" induced by the stochastic elements is actually a very useful property
 because it will allow us to de-correlate signals in the circuit.
 
+04_stochastic_complement.circ
+-----------------------------
+
+This file introduces one of simplest stochastic operations: complement. The
+complement of a stochastic bitstream is created by passing it through a NOT-gate.
+In the file, there are four displays. The prime (') means "complement":
+
+    [VAR]       [VAR']
+
+    [P]         [P']
+
+    VAR' = 0.996 - VAR
+
+    P'   = 1 - P
+
+VAR and VAR' can be controlled using the buttons. P is a stochastic variable
+that trends to VAR. And P' is a stochastic variable that trends to VAR'. By
+adjusting the value of VAR and comparing the displays, you can see how the
+stochastic variables respond to changes of VAR. While this is only a very
+simple arithmetic example, it serves to illustrate the overall behavior of
+stochastic variables in a stochastic bitstream circuit. In general, we cannot
+neglect time-delays so we have to analyze the steady-state behavior of the
+circuit to understand how it will behave.
+
 Stay tuned...
 
