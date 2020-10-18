@@ -30,7 +30,8 @@ higher resolution.
 
 I'll try to add a description for each Logisim file as I publish it.
 
-* 01_basics.circ
+01_basics.circ
+--------------
 
 This file introduces the inputs and outputs for the SBC circuits we will build.
 It introduces the VAR element which can be used to drive an 8-bit value. To
@@ -39,8 +40,8 @@ decrease it, click the lower button. It introduces the DISPH element which can
 drive two 7-segment displays showing an 8-bit hex value. It introduces the
 DISP11 element which can drive 7-segment displays and an LED-matrix showing the
 Representation III value of an 8-bit counter input. It introduces the DISP01
-element which is just like the DISP11 element except that it ranges from 0 to
-1. It introduces the GRAPH element which can visually track the level of an
+element which is just like the DISP11 element except that it ranges from 0 to 1.
+It introduces the GRAPH element which can visually track the level of an
 8-bit value over time. Note that the graphical elements only have 16 LEDs so
 they are only using the upper hex digit of the 8-bit value and throwing away
 the lower hex digits. Practically, this means you will click VAR four times in
