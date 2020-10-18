@@ -36,16 +36,25 @@ I'll try to add a description for each Logisim file as I publish it.
 This file introduces the inputs and outputs for the SBC circuits we will build.
 It introduces the VAR element which can be used to drive an 8-bit value. To
 increase the output value of the VAR element, click the upper button. To
-decrease it, click the lower button. It introduces the DISPH element which can
-drive two 7-segment displays showing an 8-bit hex value. It introduces the
-DISP11 element which can drive 7-segment displays and an LED-matrix showing the
-Representation III value (which ranges from -1 to 1) of an 8-bit counter input.
+decrease it, click the lower button. 
+
+It introduces the DISPH element which can drive two 7-segment displays showing
+an 8-bit hex value.
+
+It introduces the DISP11 element which can drive 7-segment displays and an
+LED-matrix showing the Representation III value (which ranges from -1 to 1) of
+an 8-bit counter input.
+
 It introduces the DISP01 element which is just like the DISP11 element except
-that it ranges from 0 to 1. It introduces the GRAPH element which can visually
-track the level of an 8-bit value over time. Note that the graphical elements
-only have 16 LEDs so they are only using the upper hex digit of the 8-bit value
-and throwing away the lower hex digits. Practically, this means you will click
-VAR four times in one direction before you see a visual change on the LEDs.
+that it is based on Representation I which ranges from 0 to 1.
+
+It introduces the GRAPH element which can visually track the level of an 8-bit
+value over time.
+
+Note that the graphical elements only have 16 LEDs so they are only using the
+upper hex digit of the 8-bit value and throwing away the lower hex digits.
+Practically, this means you will click VAR four times in one direction before
+you see a visual change on the LEDs.
 
 The next circuit will introduce a few basic elements that are used in a
 stochastic bitstream circuit. Stay tuned...
