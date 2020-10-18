@@ -74,6 +74,16 @@ display will show 0.500). If you increase VAR towards 1, a larger and larger
 percentage of the columns will have a green dot. And so on. The DSC element is
 a convenient way to generate stochastic input signals to a stochastic circuit.
 
+You will also notice the D8RNG element. This element is just a random noise
+source. Some of the elements require a random noise source in order to
+function.  These elements will have an input signal named "D8_RNG_IN" and a
+corresponding output signal named "D8_RNG_OUT". This is a workaround for
+Logisim's built-in random generators which all operate in synch, that is, they
+all output the *same* random value. It is essential for stochastic bitstream
+circuits that all random numbers in the system must be completely
+un-correlated. The D8RNG signal adds some extra wires to the circuits but they
+can be ignored for the purposes of understanding the function of the circuit.
+
 03_ADDIE_intro.circ
 -------------------
 
