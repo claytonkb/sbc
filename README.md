@@ -37,7 +37,8 @@ This file introduces the inputs and outputs for the SBC circuits we will build.
 It introduces the VAR element which can be used to drive an 8-bit value. To
 increase the output value of the VAR element, click the upper button. To
 decrease it, click the lower button. You must press Ctl+K to start the clocks
-before the counters will respond to button-presses.
+before the counters will respond to button-presses. Also, you may need to press
+Ctl+1 (numeric) to manipulate the buttons.
 
 It introduces the DISPH element which can drive two 7-segment displays showing
 an 8-bit hex value.
