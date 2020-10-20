@@ -6,11 +6,11 @@ of stochastic computing than that described by Gaines, and so I am calling this
 approach "stochastic bitstream computing." There is also a form of computing
 termed "bitstream computing" which does not necessarily utilize stochasticity.
 
-This repository contains [logisim](http://www.cburch.com/logisim/) files.
+This repository contains [Logisim](http://www.cburch.com/logisim/) files.
 
 ![Logisim](img/logisim_screenshot.png)
 
-You can run logisim on Windows or Linux systems by installing a Java runtime.
+You can run Logisim on Windows or Linux systems by installing a Java runtime.
 Download and run the Logisim installer for your OS and everything should just
 work. Unfortunately, Logisim is no longer being maintained so if you have an
 issue, there may be no solution. In the future, I plan to port to Verilog so
@@ -28,7 +28,7 @@ Representation II is of limited interest. By and large, the counter elements
 are 8-bit (saturating). I am also building some 16-bit elements for handling
 higher resolution.
 
-I'll try to add a description for each Logisim file as I publish it.
+I plan to add a description for each Logisim file as I publish it.
 
 01_basics.circ
 --------------
@@ -36,9 +36,11 @@ I'll try to add a description for each Logisim file as I publish it.
 This file introduces the inputs and outputs for the SBC circuits we will build.
 It introduces the VAR element which can be used to drive an 8-bit value. To
 increase the output value of the VAR element, click the upper button. To
-decrease it, click the lower button. You must press Ctl+K to start the clocks
-before the counters will respond to button-presses. Also, you may need to press
-Ctl+1 (numeric) to manipulate the buttons.
+decrease it, click the lower button.
+
+Note: You must press Ctl+K to start the clocks before the counters will respond
+to button-presses. Also, you may need to press Ctl+1 (numeric) to manipulate
+the buttons.
 
 It introduces the DISPH element which can drive two 7-segment displays showing
 an 8-bit hex value.
@@ -53,7 +55,7 @@ that it is based on Representation I which ranges from 0 to 1.
 It introduces the GRAPH element which can visually track the level of an 8-bit
 value over time.
 
-Note that the graphical elements only have 16 LEDs so they are only using the
+Note: The graphical elements only have 16 LEDs so they are only using the
 upper hex digit of the 8-bit value and throwing away the lower hex digits.
 Practically, this means you will click VAR sixteen times in one direction
 before you see a visual change on the LEDs.
@@ -67,17 +69,17 @@ on the 7-segment displays is 0.000, the graph will stay blank. But when you
 increase the value of VAR to some non-zero value, you will start to see green
 dots showing up on the graph.
 
-If you set VAR to 0.500, you will see about 50% of the columns have a green
-dot, and 50% do not, at any given time. But the pattern is random and this is
-what makes the stochastic signal stochastic. It is a single bit line carrying a
-1 about 50% of the time when the 8-bit input of the DSC is 0x80 (and the
-display will show 0.500). If you increase VAR towards 1, a larger and larger
-percentage of the columns will have a green dot. And so on. The DSC element is
-a convenient way to generate stochastic input signals to a stochastic circuit.
+If you set VAR to 0.500, you will see that about 50% of the columns have a
+green dot and 50% do not, at any given time. But the pattern is random and this
+is what makes the signal *stochastic*. It is a single bit line carrying a 1
+about 50% of the time when the 8-bit input of the DSC is 0x80 (the display will
+show 0.500). If you increase VAR towards 1, a larger and larger percentage of
+the columns will have a green dot. And so on. The DSC element is a convenient
+way to generate stochastic input signals to a stochastic circuit.
 
 You will also notice the D8RNG element. This element is just a random noise
 source. Some of the elements require a random noise source in order to
-function.  These elements will have an input signal named "D8_RNG_IN" and a
+function. These elements will have an input signal named "D8_RNG_IN" and a
 corresponding output signal named "D8_RNG_OUT". This is a workaround for
 Logisim's built-in random generators which all operate in synch, that is, they
 all output the *same* random value. It is essential for stochastic bitstream
@@ -105,26 +107,34 @@ because it will allow us to de-correlate signals in the circuit.
 04_stochastic_complement.circ
 -----------------------------
 
-This file introduces one of simplest stochastic operations: complement. The
-complement of a stochastic bitstream is created by passing it through a NOT-gate.
-In the file, there are four displays. The prime (') means "complement":
+This file introduces one of simplest SBC operations: complement. The complement
+of a stochastic bitstream is created by passing it through a NOT-gate. In the
+file, there are four displays:
 
     [VAR]       [VAR']
 
     [P]         [P']
 
-    VAR' = 0.996 - VAR
+The prime (') means "complement". VAR and VAR' can be controlled using the
+buttons. P is a stochastic variable that trends to VAR. And P' is a stochastic
+variable that trends to VAR'. Here are the arithmetic relationships between
+them:
 
-    P'   = 1 - P
+    VAR'  = 0.996 - VAR
 
-VAR and VAR' can be controlled using the buttons. P is a stochastic variable
-that trends to VAR. And P' is a stochastic variable that trends to VAR'. By
-adjusting the value of VAR and comparing the displays, you can see how the
-stochastic variables respond to changes of VAR. While this is only a very
-simple arithmetic example, it serves to illustrate the overall behavior of
-stochastic variables in a stochastic bitstream circuit. In general, we cannot
-neglect time-delays so we have to analyze the steady-state behavior of the
-circuit to understand how it will behave.
+      P'  = 1 - P
+
+      P  ~= VAR
+
+      P' ~= VAR'
+
+Where `~=` should be read "approximately equal". By adjusting the value of VAR
+and comparing the displays, you can see how the stochastic variables respond to
+changes of VAR. While this is only a very simple arithmetic example, it serves
+to illustrate the overall behavior of stochastic variables in a stochastic
+bitstream circuit. In general, we cannot neglect time-delays so we have to
+analyze the steady-state behavior of the circuit to understand how it will
+behave.
 
 Stay tuned...
 
