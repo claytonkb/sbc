@@ -122,7 +122,7 @@ them:
 
     VAR'  = 0.996 - VAR
 
-      P'  = 1 - P
+      P' ~= 1 - P
 
       P  ~= VAR
 
