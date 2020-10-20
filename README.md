@@ -136,5 +136,41 @@ bitstream circuit. In general, we cannot neglect time-delays so we have to
 analyze the steady-state behavior of the circuit to understand how it will
 behave.
 
+05_mean_and_product.circ
+------------------------
+
+This file introduces the AVG2 and MUL elements. The AVG2 element calculates
+the average (or mean) of its 2 inputs. The MUL element multiplies its inputs.
+
+The main circuit does not use the circuit library components but, rather, has
+an exploded view of the internal circuit elements. This makes it easy to see
+how the mean and product are performed in SBC. It is important to notice that
+these elements are each formed with a *single digital logic gate* -- the mean
+is calculated with a multiplexer and the product is calculated with an
+AND-gate.
+
+In standard digital logic, an adder is a somewhat ponderous circuit
+and if you want to make the latency small, you have to add propagate and
+generate logic that scales up the size of the naive ripple adder considerably.
+
+Similarly, the standard digital logic multiplier is quadratic in the size of
+its inputs. Space-optimized multiplier circuits are possible, at the expense of
+added latency. The SBC multiplier, consisting of a single AND-gate, has
+virtually zero die-space cost. While it has drawbacks in terms of limited
+accuracy and some latency, these are well offset by the savings in die-space,
+especially when considering applications like machine learning training
+workloads where we can tolerate a certain noise margin and we would like to
+perform an enormous number of multiplications in parallel.
+
+At first glance, it might seem useless to calculate the average of two values.
+However, the average is just the sum scaled down by a factor of two. If the
+ordinary sum is required, it is straightforward to double the result (I will
+introduce a modified ADDIE that can perform this kind of scaling in an upcoming
+circuit).
+
+Note that the MUL element works only for Representation I. For the other
+representations, a slightly different circuit must be used. The AVG2 element
+will work on both Representation I and III.
+
 Stay tuned...
 
