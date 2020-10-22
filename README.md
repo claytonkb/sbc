@@ -172,5 +172,26 @@ Note that the MUL element works only for Representation I. For the other
 representations, a slightly different circuit must be used. The AVG2 element
 will work on both Representation I and III.
 
+06_signed_arithmetic.circ
+-------------------------
+
+This file introduces the mean and product on signed values, that is, values in
+Representation III. In part 5, we configured the multiplier manually with an
+AND-gate. You will notice that there are two different multipliers in the
+circuit library: MUL01 and MUL11. Read these as "Multiplier with range
+0,1" and "Multiplier with range -1,1", respectively. When you are operating
+on values in Representation I, you must use the MUL01 element to multiply them.
+And ditto for the MUL11 element and Representation III.
+
+You will notice that the mean and product in Representation III have considerably
+more noise than the same in Representation I. Try running both Logisim files
+side by side and set A and B to the same (positive) values. You will notice
+that the fluctuations in the mean are more extreme in Representation III. You
+can track the fluctuations visually on the graph of the product.
+
+Try the extreme settings of A and B on MUL01 and MUL11 and compare the difference
+in the graphed output. For example, set A=0 and sweep B across its range. Are
+the graphs the same or different, and why?
+
 Stay tuned...
 
