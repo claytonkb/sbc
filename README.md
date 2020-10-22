@@ -107,9 +107,9 @@ because it will allow us to de-correlate signals in the circuit.
 04_stochastic_complement.circ
 -----------------------------
 
-This file introduces one of simplest SBC operations: complement. The complement
-of a stochastic bitstream is created by passing it through a NOT-gate. In the
-file, there are four displays:
+This file introduces one of the simplest SBC operations: complement. The
+complement of a stochastic bitstream is created by passing it through a
+NOT-gate. In the file, there are four displays:
 
     [VAR]       [VAR']
 
