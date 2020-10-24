@@ -38,9 +38,9 @@ It introduces the VAR element which can be used to drive an 8-bit value. To
 increase the output value of the VAR element, click the upper button. To
 decrease it, click the lower button.
 
-Note: You must press Ctl+K to start the clocks before the counters will respond
+*Note: You must press Ctl+K to start the clocks before the counters will respond
 to button-presses. Also, you may need to press Ctl+1 (numeric) to manipulate
-the buttons.
+the buttons.*
 
 It introduces the DISPH element which can drive two 7-segment displays showing
 an 8-bit hex value.
@@ -55,10 +55,10 @@ that it is based on Representation I which ranges from 0 to 1.
 It introduces the GRAPH element which can visually track the level of an 8-bit
 value over time.
 
-Note: The graphical elements only have 16 LEDs so they are only using the
-upper hex digit of the 8-bit value and throwing away the lower hex digits.
-Practically, this means you will click VAR sixteen times in one direction
-before you see a visual change on the LEDs.
+*Note: The graphical elements only have 16 LEDs so they are only using the upper
+hex digit of the 8-bit value and throwing away the lower bits.  Practically,
+this means you will click VAR sixteen times in one direction before you see a
+visual change on the LEDs.*
 
 02_DSC.circ
 -----------
@@ -168,9 +168,9 @@ ordinary sum is required, it is straightforward to double the result (I will
 introduce a modified ADDIE that can perform this kind of scaling in an upcoming
 circuit).
 
-Note that the MUL element works only for Representation I. For the other
+*Note: The MUL element works only for Representation I. For the other
 representations, a slightly different circuit must be used. The AVG2 element
-will work on both Representation I and III.
+will work on both Representation I and III.*
 
 06_signed_arithmetic.circ
 -------------------------
